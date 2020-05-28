@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>xat Wiki Frame 1</title>
+    </head>
+    <body>
+        <style>
+            @import url(https://fonts.googleapis.com/css?family=Poiret+One);
+
+            html,
+            body {
+              /*background-image: linear-gradient(0deg, #36295e, #1c1045);*/
+              height: 100%;
+              overflow: hidden;
+              display:flex;
+              flex-direction: row;
+              flex-wrap: wrap;
+              justify-content: center;
+              align-content: flex-start;
+              align-items: center;
+            }
+
+            .center {
+              margin: 0 auto;
+            }
+
+            #outer-ring {
+              position: absolute;
+              left: calc(50% - 222px);
+              height: 250px;
+              width: 250px;
+              /*background-image: linear-gradient(135deg, #000050 0%, #212529 5%, #17a2b8 15%, #8a8a8a 50%, #dc3545 100%);*/
+              border-radius: 50%;
+              
+              /*  Rotate  */
+              animation-duration: 2s;
+              animation-name: rotate;
+              animation-iteration-count: infinite;
+              top: 132px;
+              animation-timing-function: linear;
+            }
+
+            #inner-ring {
+              position: absolute;
+              left: calc(50% - 212px);
+              height: 230px;
+              width: 230px;
+              border-radius: 50%;
+              top: 141px;
+            }
+
+            @keyframes rotate {
+                0% {transform:rotate(0deg);}
+                100% {transform:rotate(360deg);}
+            }
+
+            #text {
+                font-size: 39px;
+                font-weight: bold;
+                color: hsl(254, 100%, 99%);
+                text-shadow: 1px 1px hsla(0,0%,5%,1), -1px -1px hsla(0,0%,5%,1);
+                font-family: 'Poiret One', cursive;
+                letter-spacing: 5px;
+                text-align: center;
+                vertical-align: middle;
+                line-height: 230px;
+            }
+
+            </style>
+            <div id="outer-ring" class="center"></div>
+            <div id="inner-ring" class="center">
+                <div id="text"></div>
+            </div>
+    </body>
+    <script>
+        window.addEventListener("load", function(){
+            const params = new URLSearchParams(decodeURIComponent(window.location.search));
+
+            document.getElementById("text").innerHTML = params.get('name');
+
+            document.body.style.backgroundImage = "linear-gradient(0deg, #" + params.get('bg2') + ", #" + params.get('bg1') + ")"
+
+            document.getElementById("inner-ring").style.backgroundImage = "linear-gradient(0deg, #" + params.get('bg2') + ", #" + params.get('bg1') + ")"
+
+            document.getElementById("outer-ring").style.backgroundImage = "linear-gradient(135deg, #000000 0%, #000000 5%, #" + params.get('c3') + " 15%, #" + params.get('c1') + " 50%, #" + params.get('c2') + " 100%)"
+        });
+    </script>
+    <!--<script src="assets/js/rubyyy.js"></script>-->
+</html>
